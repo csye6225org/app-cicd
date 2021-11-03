@@ -1,6 +1,6 @@
 
-resource "aws_iam_policy" "ghaction_app_policy" {
-  name        = "ghaction_app_policy"
+resource "aws_iam_policy" "GH-Upload-To-S3" {
+  name        = "GH-Upload-To-S3"
   description = "Github actions application policy"
   policy      = <<EOF
 {
@@ -25,5 +25,5 @@ EOF
 
 resource "aws_iam_user_policy_attachment" "ghaction_app_policy_attachment" {
   user       = var.aws_iam_user
-  policy_arn = aws_iam_policy.ghaction_app_policy.arn
+  policy_arn = aws_iam_policy.GH-Upload-To-S3.arn
 }
