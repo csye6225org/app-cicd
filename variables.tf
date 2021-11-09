@@ -18,3 +18,7 @@ variable "aws_codedeploy_application_name" {
   type        = string
   description = "AWS codedeploy application name"
 }
+variable "aws_codedeploy_deployment_group" {
+  type        = string
+  description = "AWS codedeploy deployment group name"
+}
