@@ -94,16 +94,19 @@ resource "aws_iam_policy" "policy_3" {
   description = "Github actions lambda function deployment policy"
   policy      = <<EOF
 {
-  "Version" = "2012-10-17",
-  "Statement" = [
+  "Version": "2012-10-17",
+  "Statement": 
+  [
     {
-      "Effect" = "Allow",
-      "Action" = [
+      "Action": [
         "lambda:UpdateFunctionCode",
         "lambda:UpdateFunctionConfiguration",
         "lambda:PublishVersion"
       ],
-      "Resource" = "arn:aws:lambda:${var.aws_region}:${var.aws_account_id}:function:${var.aws_lambda_function_name}"
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:lambda:${var.aws_region}:${var.aws_account_id}:function:${var.aws_lambda_function_name}"
+      ]
     }
   ]
 }
