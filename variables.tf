@@ -22,3 +22,7 @@ variable "aws_codedeploy_deployment_group" {
   type        = string
   description = "AWS codedeploy deployment group name"
 }
+variable "aws_lambda_function_name" {
+  type        = string
+  description = "AWS lambda function name"
+}
