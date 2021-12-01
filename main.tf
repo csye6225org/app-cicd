@@ -84,3 +84,33 @@ resource "aws_iam_user_policy_attachment" "policy_attachment_2" {
   user       = var.aws_iam_user
   policy_arn = aws_iam_policy.policy_2.arn
 }
+
+// ############################################
+// # GH-Lambda-Function-Deploy
+// ############################################
+
+resource "aws_iam_policy" "policy_3" {
+  name        = "GH-Lambda-Function-Deploy"
+  description = "Github actions lambda function deployment policy"
+  policy      = <<EOF
+{
+  "Version" = "2012-10-17",
+  "Statement" = [
+    {
+      "Effect" = "Allow",
+      "Action" = [
+        "lambda:UpdateFunctionCode",
+        "lambda:UpdateFunctionConfiguration",
+        "lambda:PublishVersion"
+      ],
+      "Resource" = "arn:aws:lambda:${var.aws_region}:${var.aws_account_id}:function:${var.aws_lambda_function_name}"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_user_policy_attachment" "policy_attachment_3" {
+  user       = var.aws_iam_user
+  policy_arn = aws_iam_policy.policy_3.arn
+}
